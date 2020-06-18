@@ -116,9 +116,8 @@ var darkmap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
 	}).addTo(myMap);
 	
 
-	/*
 	var legend = L.control({position: 'bottomright'});
-		legend.onAdd = function() {
+		lengend.onAdd = function(map) {
 
 			var div = L.DomUtil.create('div', 'info legend');
 			div.innerHTML = "<h3>Earthquake Magnitude</h3><table><tr><th>4+</th><td>Red</td></tr><tr><th>3+</th><td>Orange</td></tr><tr><th>2+</th><td>Yellow</td></tr><tr><th>1+</th><td>Lime</td></tr><tr><th><1</th><td>Green</td></tr></table>";
@@ -126,56 +125,6 @@ var darkmap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
 
 		};
 	legend.addTo(myMap);
-	*/
-
-	/*
-var legend = L.control({position: 'bottomright'});
-    legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend');
-    labels = ['<strong>Categories</strong>'],
-    categories = ['4+','3+','2+','1+','<1'];
-    colors=['Red','Orange','Yellow','Lime','Green']
-
-    for (var i = 0; i < categories.length; i++) {
-            div.innerHTML += 
-            labels.push(
-                '<i style="background:' + colors[i] + '"></i> ' +
-                (categories[i] ? categories[i] : '+'));
-        }
-
-        div.innerHTML = labels.join('<br>');
-    return div;
-};
-
-legend.addTo(myMap);
-*/
-
-  // Set up the legend
-  var legend = L.control({ position: "bottomright" });
-  legend.onAdd = function() {
-    var div = L.DomUtil.create("div", "info legend");
-    var limits = ['4+','3+','2+','1+','<1'];
-    var colors = ['red','orange','yellow','lime','green'];
-    var labels = [];
-
-    // Add min & max
-    var legendInfo = "<h1 style=\"color:red\">Earthquake Magnitude</h1>" +
-      "<div class=\"labels\">" +
-        "<div class=\"min\">" + limits[0] + "</div>" +
-        "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
-      "</div>";
-
-    div.innerHTML = legendInfo;
-
-    limits.forEach(function(limit, index) {
-      labels.push(`<li style="background-color: ${colors[index]}">${limit}</li>`);
-    });
-
-    div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-    return div;
-}
-legend.addTo(myMap);
 
 }
 
