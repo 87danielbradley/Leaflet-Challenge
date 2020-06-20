@@ -38,7 +38,7 @@ function markerOpacity(magnitude){
 
 var queryUrl= "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
 var geoJson;
-d3.json(queryUrl, function(data) {
+d3.json(queryUrl).then(function(data) {
 	createFeatures(data.features);
 });
 
